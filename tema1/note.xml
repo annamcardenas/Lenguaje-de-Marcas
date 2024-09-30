@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+<breakfast_menu>
+    <food>
+        <name>Belgian Waffles</name>
+        <price>$5.95</price>
+        <description>
+    Two of our famous Belgian Waffles with plenty of real maple syrup
+    </description>
+        <calories>650</calories>
+    </food>
+    <food>
+        <name>Strawberry Belgian Waffles</name>
+        <price>$7.95</price>
+        <description>
+        Light Belgian waffles covered with strawberries and whipped cream
+        </description>
+        <calories>900</calories>
+    </food>
+    <food>
+        <name>Berry-Berry Belgian Waffles</name>
+        <price>$8.95</price>
+        <description>
+        Belgian waffles covered with assorted fresh berries and whipped cream
+        </description>
+        <calories>900</calories>
+    </food>
+    <food>
+        <name>French Toast</name>
+        <price>$4.50</price>
+        <description>
+        Thick slices made from our homemade sourdough bread
+        </description>
+        <calories>600</calories>
+    </food>
+    <food>
+        <name>Homestyle Breakfast</name>
+        <price>$6.95</price>
+        <description>
+        Two eggs, bacon or sausage, toast, and our ever-popular hash browns
+        </description>
+        <calories>950</calories>
+    </food>
+    </breakfast_menu>
+
+-->
+
+<library_books>
+    <book>
+        <title>El Quijote</title>
+        <author>Miguel de Cervantes</author>
+        <description>El ingenioso hidalgo don Quijote de la Mancha a comienzos de 1605,
+        es la obra más destacada de la literatura española y una de las principales de la literatura universal.</description>
+        <date>1605</date>  
+    </book>
+
+    <book>
+        <title>El Escarabajo de oro</title>
+        <author>Edgar Allan Poe</author>
+        <description>La historia sigue a un amigo del narrador, Legrand,que encuentra un escarabajo de oro brillante con manchas negras en los alrededores.</description>
+        <date>1843</date>  
+    </book>
+
+</library_books>
