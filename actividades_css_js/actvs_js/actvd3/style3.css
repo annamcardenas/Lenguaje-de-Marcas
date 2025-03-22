@@ -1,0 +1,46 @@
+/* Estilo 1 */
+body.estilo1 {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+body.estilo1 h1 {
+    color: #0077cc;
+}
+
+body.estilo1 #contenedorImagen {
+    margin-top: 20px;
+    text-align: center;
+}
+
+body.estilo1 img {
+    border: 5px solid #0077cc;
+    border-radius: 10px;
+}
+
+img {
+    width: 500px; 
+    height: auto;
+}
+
+/* Estilo 2 */
+body.estilo2 {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #333;
+    color: #fff;
+}
+
+body.estilo2 h1 {
+    color: #ff6347;
+}
+
+body.estilo2 #contenedorImagen {
+    margin-top: 20px;
+    text-align: center;
+}
+
+body.estilo2 img {
+    border: 5px solid #ff6347;
+    border-radius: 10px;
+}

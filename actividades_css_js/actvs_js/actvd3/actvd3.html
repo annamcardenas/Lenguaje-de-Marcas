@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Imágenes de Coches y Spiderman</title>
+    <link rel="stylesheet" type="text/css" href="style3.css"> <!-- Una sola hoja de estilo -->
+    <script src="script3.js"></script> <!-- Archivo JavaScript externo -->
+</head>
+<body class="estilo1"> <!-- Clase predeterminada -->
+    <h1>Galería de Imágenes</h1>
+
+    <!-- Selector de imágenes -->
+    <label for="selectorImagen">Selecciona una imagen:</label>
+    <select id="selectorImagen" onchange="cambiaImagen()">
+        <option value="ImagesCars/coche1.jpg">Coche 1</option>
+        <option value="ImagesCars/coche2.jpg">Coche 2</option>
+        <option value="ImagesCars/coche3.jpg">Coche 3</option>
+        <option value="ImagesSpiderman/spiderman1.gif">Spiderman 1</option>
+        <option value="ImagesSpiderman/spiderman2.jpg">Spiderman 2</option>
+        <option value="ImagesSpiderman/spiderman3.jpg">Spiderman 3</option>
+    </select>
+
+    <!-- Área para mostrar la imagen -->
+    <div id="contenedorImagen">
+        <img id="miImagen" src="../actvd3/ImagesCars/coche1.jpg" alt="Imagen seleccionada">
+    </div>
+
+    <!-- Botones para cambiar estilos -->
+    <button onclick="cambiarEstilo('estilo1')">Estilo 1</button>
+    <button onclick="cambiarEstilo('estilo2')">Estilo 2</button>
+</body>
+</html>

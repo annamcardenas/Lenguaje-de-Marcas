@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    color: black;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    max-width: 800px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-family: Georgia, serif;
+    color: blue;
+    background-color: lightgray;
+    font-weight: bold;
+    font-size: 24px;
+    letter-spacing: 1.6em;
+    word-spacing: 2em;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-family: Georgia, serif;
+    color: darkred;
+    font-size: 18px;
+    letter-spacing: 1.4em;
+    margin-top: 20px;
+}
+
+p {
+    margin: 10px 0;
+}
+
+strong {
+    font-weight: bold;
+}
+
+.section {
+    margin-bottom: 20px;
+}

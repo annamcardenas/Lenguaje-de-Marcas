@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Estilos específicos para las celdas de color */
+td:nth-child(1) {
+    font-weight: bold;
+}
+
+td:nth-child(2), td:nth-child(3), td:nth-child(4) {
+    color: white;
+}
+
+/* Colores de fondo para cada fila */
+tr:nth-child(1) td:nth-child(n+2) {
+    background-color: rgb(254, 255, 239);
+}
+
+tr:nth-child(2) td:nth-child(n+2) {
+    background-color: rgb(245, 245, 220);
+}
+
+tr:nth-child(3) td:nth-child(n+2) {
+    background-color: rgb(210, 105, 30);
+}
+
+tr:nth-child(4) td:nth-child(n+2) {
+    background-color: rgb(190, 190, 190);
+}

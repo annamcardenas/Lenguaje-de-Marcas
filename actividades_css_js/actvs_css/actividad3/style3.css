@@ -1,0 +1,35 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Evita el scroll */
+}
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+.image {
+    background-image: url('background.jpg'); /* Cambia 'background.jpg' por tu imagen */
+    background-repeat: repeat-y; /* Repite la imagen en el eje Y */
+    background-position: left; /* Posiciona la imagen a la izquierda */
+    width: 50%; /* Ancho de la imagen */
+    height: 100%;
+}
+
+.content {
+    width: 50%; /* Ancho del contenido */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+}
