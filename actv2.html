@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h2>JSON Ejercicio</h2>
+    <p id="demo"></p>
+
+    <script>
+        var txt = "";
+        var x;
+        var myJSON = `{
+  "name":"John",
+  "age":30,
+  "pets":[
+    {"type":"dog", "name":"Fido"},
+    {"type":"cat", "name":"Felix"},
+    {"type":"hamster", "name":"Nibbles"}
+  ]
+}`;
+        var myObj = JSON.parse(myJSON);
+
+        txt += "Edad: " + myObj.age + "<br><br>";
+
+        txt += "Tipo de la primera mascota: " + myObj.pets[0].type + "<br>";
+
+        txt += "Nombre de la primera mascota: " + myObj.pets[0].name + "<br>";
+
+        txt += "Número de mascotas: " + myObj.pets.length + "<br><br>";
+
+        txt += "Nombres de todas las mascotas:<br>";
+        for (x of myObj.pets) {
+            txt += "- " + x.name + "<br>";
+        }
+
+        txt += "<br><strong>Datos completos:</strong><br>";
+        txt += "Nombre: " + myObj.name + "<br>";
+        txt += "Edad: " + myObj.age + "<br>";
+        txt += "Mascotas:<br>";
+        for (x of myObj.pets) {
+            txt += x.type + " - " + x.name + "<br>";
+        }
+
+        txt += "<br><table border='1'><tr><th>Tipo</th><th>Nombre</th></tr>";
+        for (x of myObj.pets) {
+            txt += "<tr><td>" + x.type + "</td><td>" + x.name + "</td></tr>";
+        }
+        txt += "</table>";
+
+        document.getElementById("demo").innerHTML = txt;
+    </script>
+
+</body>
+
+</html>
