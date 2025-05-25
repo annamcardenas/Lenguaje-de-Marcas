@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de Funciones JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2 {
+            color: #2c3e50;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .exercise {
+            background-color: #f9f9f9;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 0 5px 5px 0;
+        }
+
+        label {
+            display: inline-block;
+            width: 150px;
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 8px;
+            width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e8f4fc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ejercicios de Funciones JavaScript</h1>
+
+    <div class="exercise">
+        <h2>1. Encontrar el mayor de dos números</h2>
+        <label for="num1">Primer número:</label>
+        <input type="number" id="num1"><br>
+        <label for="num2">Segundo número:</label>
+        <input type="number" id="num2"><br>
+        <button onclick="showMax()">Mostrar mayor</button>
+        <div class="result" id="maxResult"></div>
+    </div>
+
+    <div class="exercise">
+        <h2>2. Encontrar el mayor de tres números</h2>
+        <label for="num3">Primer número:</label>
+        <input type="number" id="num3"><br>
+        <label for="num4">Segundo número:</label>
+        <input type="number" id="num4"><br>
+        <label for="num5">Tercer número:</label>
+        <input type="number" id="num5"><br>
+        <button onclick="showMaxOfThree()">Mostrar mayor</button>
+        <div class="result" id="maxThreeResult"></div>
+    </div>
+
+    <div class="exercise">
+        <h2>3. Verificar si es vocal</h2>
+        <label for="char">Introduce un carácter:</label>
+        <input type="text" id="char" maxlength="1"><br>
+        <button onclick="checkVowel()">Verificar</button>
+        <div class="result" id="vowelResult"></div>
+    </div>
+
+    <div class="exercise">
+        <h2>4. Traductor a Rövarspråket</h2>
+        <label for="textToTranslate">Texto a traducir:</label>
+        <input type="text" id="textToTranslate"><br>
+        <button onclick="translateText()">Traducir</button>
+        <div class="result" id="translateResult"></div>
+    </div>
+
+    <div class="exercise">
+        <h2>5. Suma y multiplicación de números</h2>
+        <label for="numbers">Números (separados por comas):</label>
+        <input type="text" id="numbers"><br>
+        <button onclick="calculateSum()">Sumar</button>
+        <button onclick="calculateMultiply()">Multiplicar</button>
+        <div class="result" id="mathResult"></div>
+    </div>
+
+    <div class="exercise">
+        <h2>6. Invertir texto</h2>
+        <label for="textToReverse">Texto a invertir:</label>
+        <input type="text" id="textToReverse"><br>
+        <button onclick="reverseText()">Invertir</button>
+        <div class="result" id="reverseResult"></div>
+    </div>
+
+    <div class="exercise">
+        <h2>7. Ordenar palabras alfabéticamente</h2>
+        <label for="wordsToSort">Palabras (separadas por comas):</label>
+        <input type="text" id="wordsToSort"><br>
+        <button onclick="sortWords()">Ordenar</button>
+        <div class="result" id="sortResult"></div>
+    </div>
+
+    <div class="exercise">
+        <h2>8. Encontrar la palabra más larga</h2>
+        <label for="wordsToCheck">Palabras (separadas por comas):</label>
+        <input type="text" id="wordsToCheck"><br>
+        <button onclick="findLongest()">Encontrar</button>
+        <div class="result" id="longestResult"></div>
+    </div>
+
+    <div class="exercise">
+        <h2>9. Filtrar palabras por longitud</h2>
+        <label for="wordsToFilter">Palabras (separadas por comas):</label>
+        <input type="text" id="wordsToFilter"><br>
+        <label for="minLength">Longitud mínima:</label>
+        <input type="number" id="minLength"><br>
+        <button onclick="filterWords()">Filtrar</button>
+        <div class="result" id="filterResult"></div>
+    </div>
+
+    <div class="exercise">
+        <h2>10. Frecuencia de caracteres</h2>
+        <label for="textToAnalyze">Texto a analizar:</label>
+        <input type="text" id="textToAnalyze"><br>
+        <button onclick="analyzeChars()">Analizar</button>
+        <div class="result" id="charFreqResult"></div>
+    </div>
+
+    <script>
+        function max(a, b) {
+            return a > b ? a : b;
+        }
+
+        function showMax() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            document.getElementById('maxResult').innerHTML = `El mayor es: ${max(num1, num2)}`;
+        }
+
+        function maxOfThree(a, b, c) {
+            return max(max(a, b), c);
+        }
+
+        function showMaxOfThree() {
+            const num3 = parseFloat(document.getElementById('num3').value);
+            const num4 = parseFloat(document.getElementById('num4').value);
+            const num5 = parseFloat(document.getElementById('num5').value);
+            document.getElementById('maxThreeResult').innerHTML = `El mayor es: ${maxOfThree(num3, num4, num5)}`;
+        }
+
+        function isVowel(char) {
+            const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+            return vowels.includes(char);
+        }
+
+        function checkVowel() {
+            const char = document.getElementById('char').value;
+            if (char.length !== 1) {
+                document.getElementById('vowelResult').innerHTML = 'Por favor, introduce solo un carácter';
+                return;
+            }
+            document.getElementById('vowelResult').innerHTML = isVowel(char) ? 'Es una vocal' : 'No es una vocal';
+        }
+
+        function translate(text) {
+            const consonants = 'bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ';
+            let result = '';
+            for (let char of text) {
+                if (consonants.includes(char)) {
+                    result += char + 'o' + char.toLowerCase();
+                } else {
+                    result += char;
+                }
+            }
+            return result;
+        }
+
+        function translateText() {
+            const text = document.getElementById('textToTranslate').value;
+            document.getElementById('translateResult').innerHTML = translate(text);
+        }
+
+        function sum(array) {
+            return array.reduce((acc, num) => acc + num, 0);
+        }
+
+        function multiply(array) {
+            return array.reduce((acc, num) => acc * num, 1);
+        }
+
+        function getNumberArray() {
+            const str = document.getElementById('numbers').value;
+            return str.split(',').map(num => parseFloat(num.trim()));
+        }
+
+        function calculateSum() {
+            const numbers = getNumberArray();
+            document.getElementById('mathResult').innerHTML = `Suma: ${sum(numbers)}`;
+        }
+
+        function calculateMultiply() {
+            const numbers = getNumberArray();
+            document.getElementById('mathResult').innerHTML = `Multiplicación: ${multiply(numbers)}`;
+        }
+
+        function reverse(str) {
+            return str.split('').reverse().join('');
+        }
+
+        function reverseText() {
+            const text = document.getElementById('textToReverse').value;
+            document.getElementById('reverseResult').innerHTML = reverse(text);
+        }
+
+        function sortWords(words) {
+            return words.sort((a, b) => a.localeCompare(b));
+        }
+
+        function getWordArray() {
+            const str = document.getElementById('wordsToSort').value;
+            return str.split(',').map(word => word.trim());
+        }
+
+        function sortWords() {
+            const words = getWordArray();
+            document.getElementById('sortResult').innerHTML = sortWords(words).join(', ');
+        }
+
+        function findLongestWord(words) {
+            return Math.max(...words.map(word => word.length));
+        }
+
+        function findLongest() {
+            const words = getWordArray();
+            document.getElementById('longestResult').innerHTML = `Longitud de la palabra más larga: ${findLongestWord(words)}`;
+        }
+
+        function filterLongWords(words, i) {
+            return words.filter(word => word.length > i);
+        }
+
+        function filterWords() {
+            const words = getWordArray();
+            const minLength = parseInt(document.getElementById('minLength').value);
+            document.getElementById('filterResult').innerHTML = filterLongWords(words, minLength).join(', ');
+        }
+
+        function charFreq(str) {
+            const freq = {};
+            for (let char of str) {
+                freq[char] = (freq[char] || 0) + 1;
+            }
+            return freq;
+        }
+
+        function analyzeChars() {
+            const text = document.getElementById('textToAnalyze').value;
+            const freq = charFreq(text);
+            document.getElementById('charFreqResult').innerHTML =
+                JSON.stringify(freq, null, 2).replace(/{|}|"/g, '').replace(/,/g, '<br>');
+        }
+    </script>
+</body>
+
+</html>

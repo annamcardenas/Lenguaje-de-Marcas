@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Trabajando con variables</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #3498db;
+            margin-top: 30px;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #textoResultado,
+        #numeroResultado,
+        #resultadosMatematicos {
+            background-color: #e8f4fc;
+            padding: 15px;
+            border-radius: 4px;
+            border-left: 4px solid #3498db;
+        }
+
+        strong {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ejercicio 4: Trabajando con variables</h1>
+
+    <h2>1. Trabajando con texto</h2>
+    <form id="textForm">
+        <label for="textInput">Ingresa un texto:</label>
+        <input type="text" id="textInput" name="textInput" placeholder="Escribe algo aquí...">
+        <button type="button" onclick="mostrarTexto()">Mostrar texto</button>
+    </form>
+    <p id="textoResultado">El resultado aparecerá aquí...</p>
+
+    <h2>2. Trabajando con números</h2>
+    <form id="numberForm">
+        <label for="numberInput">Ingresa un número:</label>
+        <input type="number" id="numberInput" name="numberInput" placeholder="Ej: 42">
+        <button type="button" onclick="mostrarNumero()">Mostrar número</button>
+    </form>
+    <p id="numeroResultado">El resultado aparecerá aquí...</p>
+
+    <h2>3. Operaciones matemáticas</h2>
+    <form id="mathForm">
+        <label for="num1">Número 1:</label>
+        <input type="number" id="num1" name="num1" placeholder="Primer número">
+
+        <label for="num2">Número 2:</label>
+        <input type="number" id="num2" name="num2" placeholder="Segundo número">
+
+        <button type="button" onclick="realizarOperaciones()">Calcular operaciones</button>
+    </form>
+    <p id="resultadosMatematicos">Los resultados de las operaciones aparecerán aquí...</p>
+
+    <script>
+        function mostrarTexto() {
+            var textoIngresado = document.getElementById("textInput").value;
+
+            if (textoIngresado.trim() === "") {
+                document.getElementById("textoResultado").innerHTML =
+                    "⚠️ Por favor ingresa algún texto";
+                return;
+            }
+
+            document.getElementById("textoResultado").innerHTML =
+                "El texto ingresado es: <strong>" + textoIngresado + "</strong>";
+        }
+
+        function mostrarNumero() {
+            var numeroIngresado = document.getElementById("numberInput").value;
+
+            if (numeroIngresado === "") {
+                document.getElementById("numeroResultado").innerHTML =
+                    "⚠️ Por favor ingresa un número";
+                return;
+            }
+
+            document.getElementById("numeroResultado").innerHTML =
+                "El número ingresado es: <strong>" + numeroIngresado + "</strong>";
+        }
+
+
+        function realizarOperaciones() {
+            var numero1 = parseFloat(document.getElementById("num1").value);
+            var numero2 = parseFloat(document.getElementById("num2").value);
+
+            if (isNaN(numero1)) {
+                document.getElementById("resultadosMatematicos").innerHTML = "⚠️ Por favor ingresa un valor válido para el número 1";
+                return;
+            }
+
+            if (isNaN(numero2)) {
+                document.getElementById("resultadosMatematicos").innerHTML = "⚠️ Por favor ingresa un valor válido para el número 2";
+                return;
+            }
+
+
+            var suma = numero1 + numero2;
+            var resta = numero1 - numero2;
+            var multiplicacion = numero1 * numero2;
+            var division = numero2 !== 0 ? numero1 / numero2 : "∞ (división por cero)";
+
+            document.getElementById("resultadosMatematicos").innerHTML =
+                "<strong>Resultados:</strong><br><br>" +
+                "Suma: " + numero1 + " + " + numero2 + " = <strong>" + suma + "</strong><br>" +
+                "Resta: " + numero1 + " - " + numero2 + " = <strong>" + resta + "</strong><br>" +
+                "Multiplicación: " + numero1 + " × " + numero2 + " = <strong>" + multiplicacion + "</strong><br>" +
+                "División: " + numero1 + " ÷ " + numero2 + " = <strong>" + (typeof division === 'number' ? division.toFixed(2) : division) + "</strong>";
+        }
+    </script>
+</body>
+
+</html>

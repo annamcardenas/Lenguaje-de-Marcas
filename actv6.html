@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poemas</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f9f5f0;
+            color: #333;
+            line-height: 1.8;
+        }
+        
+        .poem-box {
+            background-color: #fffefc;
+            border-radius: 8px;
+            padding: 40px;
+            width: 85%;
+            max-width: 600px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #e8e2d9;
+            text-align: center;
+        }
+        
+        .poem-text {
+            font-size: 1.3em;
+            margin: 30px 0;
+            color: #555;
+            white-space: pre-line;
+        }
+        
+        .poem-author {
+            font-size: 1.1em;
+            color: #8c7b6b;
+            font-weight: bold;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        
+        .new-poem-btn {
+            background-color: #a09384;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+        
+        .new-poem-btn:hover {
+            background-color: #7d6f60;
+            transform: translateY(-2px);
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="poem-box">
+        <div class="poem-text" id="poem">
+            "Caminante, son tus huellas
+            el camino y nada más;
+            caminante, no hay camino,
+            se hace camino al andar."
+        </div>
+        <div class="poem-author" id="author">
+            Antonio Machado
+        </div>
+        <button class="new-poem-btn" onclick="generatePoem()">Nuevo poema</button>
+    </div>
+
+    <script>
+        const poems = [
+            {
+                text: "Caminante, son tus huellas\nel camino y nada más;\ncaminante, no hay camino,\nse hace camino al andar.",
+                author: "Antonio Machado"
+            },
+            {
+                text: "Amor es más laberinto\nque la razón. El que entra\nperdido sale mejor.",
+                author: "Sor Juana Inés de la Cruz"
+            },
+            {
+                text: "Volverán las oscuras golondrinas\nen tu balcón sus nidos a colgar,\ny otra vez con el ala a sus cristales\njugando llamarán.",
+                author: "Gustavo Adolfo Bécquer"
+            },
+            {
+                text: "Yo no soy yo.\nSoy este\nque va a mi lado sin yo verlo;\nque, a veces, voy a ver,\ny que, a veces, olvido.",
+                author: "Juan Ramón Jiménez"
+            },
+            {
+                text: "El mar es un olvido,\nuna canción, un labio;\nel mar es un amante,\nfiel respuesta al deseo.",
+                author: "Federico García Lorca"
+            },
+            {
+                text: "La poesía es el eco de la melodía del universo en el corazón de los humanos.",
+                author: "Rabindranath Tagore"
+            },
+            {
+                text: "Hay golpes en la vida, tan fuertes... ¡Yo no sé!\nGolpes como del odio de Dios; como si ante ellos,\nla resaca de todo lo sufrido\nse empozara en el alma... ¡Yo no sé!",
+                author: "César Vallejo"
+            }
+        ];
+
+        function generatePoem() {
+            const randomIndex = Math.floor(Math.random() * poems.length);
+            const randomPoem = poems[randomIndex];
+            
+            document.getElementById("poem").textContent = randomPoem.text;
+            document.getElementById("author").textContent = randomPoem.author;
+        }
+    </script>
+</body>
+</html>
