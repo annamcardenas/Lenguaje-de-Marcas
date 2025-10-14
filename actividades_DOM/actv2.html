@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio DOM - Agregar imagen</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        #contenedor-imagen {
+            width: 500px;
+            height: 300px;
+            margin: 20px 0;
+            padding: 10px;
+            border: 2px dashed #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f9f9f9;
+        }
+
+        #contenedor-imagen img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .controls {
+            margin: 15px 0;
+        }
+
+        input {
+            padding: 8px;
+            width: 300px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ejercicio DOM - Agregar imagen dinámicamente</h1>
+
+    <div class="controls">
+        <input type="text" id="url-imagen" placeholder="Ingresa la URL de la imagen">
+        <button id="agregar-imagen">Agregar imagen</button>
+        <button id="limpiar">Limpiar</button>
+    </div>
+
+    <div id="contenedor-imagen">
+        <p>Aquí aparecerá la imagen</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Referencias a los elementos del DOM
+            const btnAgregar = document.getElementById('agregar-imagen');
+            const btnLimpiar = document.getElementById('limpiar');
+            const inputUrl = document.getElementById('url-imagen');
+            const contenedor = document.getElementById('contenedor-imagen');
+
+            // URL de imagen por defecto (opcional)
+            inputUrl.value = 'https://www.w3schools.com/js/pic_bulboff.gif';
+
+            // Evento para agregar imagen
+            btnAgregar.addEventListener('click', function () {
+                const url = inputUrl.value.trim();
+
+                if (url) {
+                    // Crear elemento imagen
+                    const imagen = document.createElement('img');
+                    imagen.src = url;
+                    imagen.alt = "Imagen agregada dinámicamente";
+
+                    // Limpiar el contenedor primero
+                    contenedor.innerHTML = '';
+
+                    // Agregar la imagen al contenedor
+                    contenedor.appendChild(imagen);
+                } else {
+                    alert('Por favor ingresa una URL válida');
+                }
+            });
+
+            // Evento para limpiar el contenedor
+            btnLimpiar.addEventListener('click', function () {
+                contenedor.innerHTML = '<p>Aquí aparecerá la imagen</p>';
+                inputUrl.value = '';
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio DOM - Mostrar párrafos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .parrafo {
+            background-color: #f0f0f0;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        #contenedor-resultado {
+            background-color: #e6f7ff;
+            padding: 15px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ejercicio DOM - Mostrar contenido de párrafos</h1>
+
+    <p class="parrafo">Este es el primer párrafo de ejemplo.</p>
+    <p class="parrafo">Este es el segundo párrafo con algo más de contenido.</p>
+    <p class="parrafo">Tercer párrafo: JavaScript es un lenguaje de programación muy versátil.</p>
+    <p class="parrafo">Último párrafo para demostrar el funcionamiento del código.</p>
+
+    <button id="mostrar-parrafos">Mostrar contenido de párrafos</button>
+
+    <div id="contenedor-resultado">
+        <h2>Contenido de los párrafos:</h2>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Obtener referencia al botón
+            const boton = document.getElementById('mostrar-parrafos');
+
+            // Obtener referencia al div donde mostraremos el resultado
+            const resultadoDiv = document.getElementById('resultado');
+
+            // Agregar evento click al botón
+            boton.addEventListener('click', function () {
+                // Limpiar contenido previo
+                resultadoDiv.innerHTML = '';
+
+                // Obtener todos los párrafos (3 métodos diferentes)
+
+                // Método 1: Por nombre de clase
+                const parrafosPorClase = document.getElementsByClassName('parrafo');
+
+                // Método 2: Por etiqueta (tag name)
+                const parrafosPorEtiqueta = document.getElementsByTagName('p');
+
+                // Usaremos el método 1 para este ejemplo
+                for (let i = 0; i < parrafosPorClase.length; i++) {
+                    // Crear un elemento para mostrar cada párrafo
+                    const parrafoElement = document.createElement('p');
+                    parrafoElement.textContent = `Párrafo ${i + 1}: ${parrafosPorClase[i].textContent}`;
+                    resultadoDiv.appendChild(parrafoElement);
+                }
+
+                // Opcional: Mostrar cuántos párrafos encontramos
+                const contador = document.createElement('p');
+                contador.style.fontWeight = 'bold';
+                contador.textContent = `Total de párrafos encontrados: ${parrafosPorClase.length}`;
+                resultadoDiv.appendChild(contador);
+            });
+        });
+    </script>
+</body>
+
+</html>

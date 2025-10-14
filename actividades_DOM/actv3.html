@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio DOM - Eliminar elementos de lista</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        li {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        li:hover {
+            background-color: #f5f5f5;
+        }
+
+        button {
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #cc0000;
+        }
+
+        .controls {
+            margin-bottom: 20px;
+        }
+
+        #nuevo-item {
+            padding: 8px;
+            width: 300px;
+            margin-right: 10px;
+        }
+
+        #agregar {
+            background-color: #4CAF50;
+            padding: 8px 15px;
+        }
+
+        #agregar:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Gestión de lista</h1>
+
+    <div class="controls">
+        <input type="text" id="nuevo-item" placeholder="Ingresa un nuevo elemento">
+        <button id="agregar">Agregar</button>
+    </div>
+
+    <ul id="mi-lista">
+        <li>Elemento 1 <button class="eliminar">Eliminar</button></li>
+        <li>Elemento 2 <button class="eliminar">Eliminar</button></li>
+        <li>Elemento 3 <button class="eliminar">Eliminar</button></li>
+        <li>Elemento 4 <button class="eliminar">Eliminar</button></li>
+    </ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const lista = document.getElementById('mi-lista');
+            const inputNuevoItem = document.getElementById('nuevo-item');
+            const btnAgregar = document.getElementById('agregar');
+
+            // Función para agregar nuevos elementos
+            btnAgregar.addEventListener('click', function () {
+                const texto = inputNuevoItem.value.trim();
+                if (texto) {
+                    const nuevoItem = document.createElement('li');
+                    nuevoItem.textContent = texto;
+
+                    // Crear botón eliminar
+                    const btnEliminar = document.createElement('button');
+                    btnEliminar.textContent = 'Eliminar';
+                    btnEliminar.className = 'eliminar';
+
+                    // Agregar evento al botón eliminar
+                    btnEliminar.addEventListener('click', function () {
+                        lista.removeChild(nuevoItem);
+                    });
+
+                    // Agregar botón al item
+                    nuevoItem.appendChild(btnEliminar);
+
+                    // Agregar item a la lista
+                    lista.appendChild(nuevoItem);
+
+                    // Limpiar input
+                    inputNuevoItem.value = '';
+                }
+            });
+
+            // Agregar eventos a los botones eliminar existentes
+            const botonesEliminar = document.querySelectorAll('.eliminar');
+            botonesEliminar.forEach(function (boton) {
+                boton.addEventListener('click', function () {
+                    const item = this.parentNode;
+                    lista.removeChild(item);
+                });
+            });
+
+            // Permitir agregar con Enter
+            inputNuevoItem.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    btnAgregar.click();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
