@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5 - Grupos de botones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .button-group {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #3498db;
+            margin-top: 0;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #style-paragraph {
+            font-size: 18px;
+            padding: 15px;
+            background-color: #e8f4fc;
+            border-radius: 4px;
+        }
+
+        #image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        #message-display {
+            min-height: 100px;
+            padding: 15px;
+            background-color: #e8f4fc;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Ejercicio 5 - Grupos de botones</h1>
+
+    <div class="button-group">
+        <h2>a. Cambiar estilo de párrafo</h2>
+        <p id="style-paragraph">Este es un párrafo de ejemplo cuyo estilo puedes cambiar con los botones.</p>
+
+        <button onclick="cambiarEstilo('normal')">Estilo Normal</button>
+        <button onclick="cambiarEstilo('cursiva')">Estilo Cursiva</button>
+        <button onclick="cambiarEstilo('negrita')">Estilo Negrita</button>
+    </div>
+
+    <div class="button-group">
+        <h2>b. Cambiar imagen</h2>
+        <div id="image-container">
+            <img id="changeable-image" src="https://via.placeholder.com/400x200?text=Imagen+1" alt="Imagen cambiante">
+        </div>
+
+        <button onclick="cambiarImagen(1)">Mostrar Imagen 1</button>
+        <button onclick="cambiarImagen(2)">Mostrar Imagen 2</button>
+        <button onclick="cambiarImagen(3)">Mostrar Imagen 3</button>
+    </div>
+
+    <div class="button-group">
+        <h2>c. Mostrar mensajes</h2>
+        <div id="message-display">Presiona un botón para mostrar un mensaje aquí.</div>
+
+        <button onclick="mostrarMensaje(1)">Mensaje 1</button>
+        <button onclick="mostrarMensaje(2)">Mensaje 2</button>
+        <button onclick="mostrarMensaje(3)">Mensaje 3</button>
+    </div>
+
+    <script>
+        function cambiarEstilo(estilo) {
+            const parrafo = document.getElementById("style-paragraph");
+
+            switch (estilo) {
+                case 'normal':
+                    parrafo.style.fontStyle = 'normal';
+                    parrafo.style.fontWeight = 'normal';
+                    break;
+                case 'cursiva':
+                    parrafo.style.fontStyle = 'italic';
+                    parrafo.style.fontWeight = 'normal';
+                    break;
+                case 'negrita':
+                    parrafo.style.fontStyle = 'normal';
+                    parrafo.style.fontWeight = 'bold';
+                    break;
+            }
+        }
+
+        function cambiarImagen(numero) {
+            const imagen = document.getElementById("changeable-image");
+            let nuevaImagen = '';
+
+            switch (numero) {
+                case 1:
+                    nuevaImagen = 'https://via.placeholder.com/400x200?text=Imagen+1';
+                    break;
+                case 2:
+                    nuevaImagen = 'https://via.placeholder.com/400x200?text=Imagen+2';
+                    break;
+                case 3:
+                    nuevaImagen = 'https://via.placeholder.com/400x200?text=Imagen+3';
+                    break;
+            }
+
+            imagen.src = nuevaImagen;
+        }
+
+        function mostrarMensaje(numero) {
+            const display = document.getElementById("message-display");
+            let mensaje = '';
+
+            switch (numero) {
+                case 1:
+                    mensaje = '¡Este es el primer mensaje! Has presionado el botón 1.';
+                    break;
+                case 2:
+                    mensaje = 'Segundo mensaje: La práctica hace al maestro.';
+                    break;
+                case 3:
+                    mensaje = 'Tercer mensaje: ¡JavaScript es divertido!';
+                    break;
+            }
+
+            display.innerHTML = mensaje;
+        }
+    </script>
+</body>
+
+</html>
