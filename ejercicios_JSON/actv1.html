@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ejercicio JSON con Array - Entrega</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #e6f7ff;
+        }
+
+        .info {
+            background-color: #e7f3fe;
+            border-left: 6px solid #2196F3;
+            padding: 10px;
+            margin: 20px 0;
+        }
+
+        .error {
+            color: #e74c3c;
+            padding: 10px;
+            background-color: #fde8e8;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Ejercicio JSON con Array de Marcas de Autos</h2>
+
+    <div id="array-info" class="info"></div>
+    <div id="demo">
+        <p>Cargando datos del array...</p>
+    </div>
+
+    <script>
+        // Solución 1: Usando datos embebidos directamente en el HTML
+        const jsonData = `["Ford", "BMW", "Audi", "Fiat"]`;
+
+        try {
+            const myArray = JSON.parse(jsonData);
+
+            // Mostrar longitud del array
+            document.getElementById("array-info").innerHTML =
+                `El array contiene <strong>${myArray.length}</strong> elementos:`;
+
+            // Crear tabla con los elementos
+            let tableHTML = `
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Marca de Auto</th>
+                        <th>Longitud del Nombre</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+
+            myArray.forEach((item, index) => {
+                tableHTML += `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${item}</td>
+                    <td>${item.length} caracteres</td>
+                </tr>
+            `;
+            });
+
+            tableHTML += `</tbody></table>`;
+            document.getElementById("demo").innerHTML = tableHTML;
+
+        } catch (e) {
+            document.getElementById("demo").innerHTML =
+                `<p class="error">Error al procesar el JSON: ${e.message}</p>`;
+        }
+    </script>
+</body>
+
+</html>

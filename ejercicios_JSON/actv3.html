@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>NASA API JSON</title>
+</head>
+
+<body>
+
+    <h2>Datos desde la API de la NASA</h2>
+
+    <p><strong>Fecha:</strong> <span id="date"></span></p>
+    <p><strong>Explicación:</strong> <span id="explanation"></span></p>
+    <p><strong>URL:</strong> <span id="url"></span></p>
+    <p><strong>Imagen del día:</strong></p>
+    <img id="nasaImage" src="" alt="Imagen de la NASA" style="max-width: 100%; height: auto; border: 1px solid #ccc;">
+
+    <script>
+        function myAjaxRequest(url, callback) {
+            var ajax = new XMLHttpRequest();
+            ajax.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200)
+                    callback(this);
+            }
+            ajax.onerror = function () {
+                console.log("Error en la solicitud AJAX a: " + url);
+            }
+            ajax.open("GET", url, true);
+            ajax.send();
+        }
+
+        function onNasaDataLoaded(ajax) {
+            var data = JSON.parse(ajax.responseText);
+
+            document.getElementById("date").innerHTML = data.date;
+            document.getElementById("explanation").innerHTML = data.explanation;
+            document.getElementById("url").innerHTML = data.url;
+            document.getElementById("nasaImage").src = data.url;
+        }
+
+        myAjaxRequest("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2020-05-01", onNasaDataLoaded);
+    </script>
+
+</body>
+
+</html>
