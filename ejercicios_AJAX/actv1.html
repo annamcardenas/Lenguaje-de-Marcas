@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Catálogo de CDs con AJAX</title>
+    <style>
+        .catalog-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            font-weight: bold;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+        }
+
+        .cd-item {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+
+        .cd-item:nth-child(10n+1),
+        .cd-item:nth-child(10n+2),
+        .cd-item:nth-child(10n+3),
+        .cd-item:nth-child(10n+4),
+        .cd-item:nth-child(10n+5) {
+            background-color: #fff;
+        }
+
+        .title {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 15px;
+            background-color: #333;
+            color: white;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cd-catalog">
+        <div class="loading">Cargando catálogo de CDs...</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                if (this.status === 200) {
+                    const xmlDoc = this.responseXML;
+                    if (!xmlDoc) {
+                        document.getElementById("cd-catalog").innerHTML =
+                            "<div class='error'>Error: No se pudo procesar el XML</div>";
+                        return;
+                    }
+
+                    const cds = xmlDoc.getElementsByTagName("CD");
+
+                    let catalogHTML = `
+                        <div class="cd-container">
+                            <div class="title">Catálogo de CDs</div>
+                            <div class="header">Título</div>
+                            <div class="header">Artista</div>
+                            <div class="header">País</div>
+                            <div class="header">Compañía</div>
+                            <div class="header">Precio (Año)</div>
+                    `;
+
+                    for (let i = 0; i < cds.length; i++) {
+                        const title = getNodeValue(cds[i], "TITLE");
+                        const artist = getNodeValue(cds[i], "ARTIST");
+                        const country = getNodeValue(cds[i], "COUNTRY");
+                        const company = getNodeValue(cds[i], "COMPANY");
+                        const price = getNodeValue(cds[i], "PRICE");
+                        const year = getNodeValue(cds[i], "YEAR");
+
+                        catalogHTML += `
+                            <div class="cd-item">${title}</div>
+                            <div class="cd-item">${artist}</div>
+                            <div class="cd-item">${country}</div>
+                            <div class="cd-item">${company}</div>
+                            <div class="cd-item">${price}€ (${year})</div>
+                        `;
+                    }
+
+                    catalogHTML += `</div>`;
+                    document.getElementById("cd-catalog").innerHTML = catalogHTML;
+                } else {
+                    document.getElementById("cd-catalog").innerHTML =
+                        `<div class="error">Error al cargar el catálogo: ${this.status}</div>`;
+                }
+            };
+
+            xhttp.onerror = function () {
+                document.getElementById("cd-catalog").innerHTML =
+                    "<div class='error'>Error de conexión al cargar el XML</div>";
+            };
+
+            xhttp.open("GET", "cd_catalog.xml");
+            xhttp.send();
+
+            function getNodeValue(parent, tagName) {
+                const elements = parent.getElementsByTagName(tagName);
+                if (elements.length > 0 && elements[0].childNodes.length > 0) {
+                    return elements[0].childNodes[0].nodeValue;
+                }
+                return "N/A";
+            }
+        });
+    </script>
+</body>
+
+</html>

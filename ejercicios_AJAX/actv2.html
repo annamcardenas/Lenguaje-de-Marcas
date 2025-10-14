@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pronóstico Meteorológico - Isla Cristina</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h1,
+        h2 {
+            color: #2c3e50;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .forecast-day {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .forecast-day:last-child {
+            border-bottom: none;
+        }
+
+        .period {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .weather-icon {
+            font-size: 2em;
+            margin-right: 10px;
+        }
+
+        .temp {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .max-temp {
+            color: #e74c3c;
+        }
+
+        .min-temp {
+            color: #3498db;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            font-style: italic;
+            color: #666;
+        }
+
+        .error {
+            color: #e74c3c;
+            padding: 10px;
+            background-color: #fde8e8;
+            border-radius: 4px;
+        }
+
+        .refresh-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .refresh-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Pronóstico Meteorológico - Isla Cristina</h1>
+
+    <div id="weather-container">
+        <div class="loading">Cargando datos meteorológicos...</div>
+    </div>
+    <button class="refresh-btn" onclick="loadWeatherData()">Actualizar Datos</button>
+
+    <script>
+        const MUNICIPALITY_CODE = '21042';
+
+        document.addEventListener('DOMContentLoaded', loadWeatherData);
+
+        function loadWeatherData() {
+            const container = document.getElementById('weather-container');
+            container.innerHTML = '<div class="loading">Cargando datos meteorológicos...</div>';
+
+            const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+            const apiUrl = `http://www.aemet.es/xml/municipios/localidad_${MUNICIPALITY_CODE}.xml`;
+
+            fetch(proxyUrl + apiUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('No se pudo obtener los datos');
+                    }
+                    return response.text();
+                })
+                .then(str => {
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(str, "text/xml");
+
+                    const errorNode = xmlDoc.querySelector('error');
+                    if (errorNode) {
+                        throw new Error(errorNode.textContent);
+                    }
+
+                    displayWeatherData(xmlDoc);
+                })
+                .catch(error => {
+                    container.innerHTML = `<div class="error">Error: ${error.message}<br>
+                    Nota: Es posible que necesites habilitar CORS temporalmente visitando <a href="https://cors-anywhere.herokuapp.com/corsdemo" target="_blank">este enlace</a> y haciendo clic en "Request temporary access to the demo server"</div>`;
+                    console.error('Error:', error);
+                });
+        }
+
+        function displayWeatherData(xmlDoc) {
+            const container = document.getElementById('weather-container');
+
+            const nombre = xmlDoc.querySelector('nombre')?.textContent || 'Isla Cristina';
+
+            const prediccion = xmlDoc.querySelector('prediccion');
+            if (!prediccion) {
+                container.innerHTML = '<div class="error">No se encontraron datos de predicción</div>';
+                return;
+            }
+
+            let html = `<h2>${nombre}</h2>`;
+
+            const dias = Array.from(prediccion.querySelectorAll('dia')).slice(0, 3);
+
+            dias.forEach(dia => {
+                const fecha = dia.getAttribute('fecha');
+                html += `<div class="container forecast-day">
+                    <h3>${formatDate(fecha)}</h3>`;
+
+                const temperatura = dia.querySelector('temperatura');
+                if (temperatura) {
+                    const max = temperatura.querySelector('maxima')?.textContent || '--';
+                    const min = temperatura.querySelector('minima')?.textContent || '--';
+                    html += `<div class="temp">
+                        <span class="max-temp">Máx: ${max}°C</span> | 
+                        <span class="min-temp">Mín: ${min}°C</span>
+                    </div>`;
+                }
+
+                const periodos = dia.querySelectorAll('estado_cielo, viento, humedad_relativa');
+                if (periodos.length > 0) {
+                    html += `<h4>Pronóstico por horas:</h4>`;
+
+                    const periodosAgrupados = {};
+
+                    periodos.forEach(periodo => {
+                        const periodoId = periodo.getAttribute('periodo') || '00-24';
+                        if (!periodosAgrupados[periodoId]) {
+                            periodosAgrupados[periodoId] = {
+                                cielo: '',
+                                viento: [],
+                                humedad: ''
+                            };
+                        }
+
+                        if (periodo.tagName === 'estado_cielo') {
+                            periodosAgrupados[periodoId].cielo = periodo.textContent;
+                        } else if (periodo.tagName === 'viento') {
+                            periodosAgrupados[periodoId].viento.push({
+                                direccion: periodo.querySelector('direccion')?.textContent || '',
+                                velocidad: periodo.querySelector('velocidad')?.textContent || ''
+                            });
+                        } else if (periodo.tagName === 'humedad_relativa') {
+                            periodosAgrupados[periodoId].humedad = periodo.textContent;
+                        }
+                    });
+
+                    for (const [periodoId, datos] of Object.entries(periodosAgrupados)) {
+                        html += `<div class="period">
+                            <div><strong>Periodo:</strong> ${formatPeriod(periodoId)}</div>`;
+
+                        if (datos.cielo) {
+                            html += `<div><strong>Cielo:</strong> ${getSkyDescription(datos.cielo)}</div>`;
+                        }
+
+                        if (datos.viento.length > 0) {
+                            html += `<div><strong>Viento:</strong> `;
+                            datos.viento.forEach(viento => {
+                                html += `${viento.direccion} a ${viento.velocidad} km/h, `;
+                            });
+                            html = html.slice(0, -2);
+                            html += `</div>`;
+                        }
+
+                        if (datos.humedad) {
+                            html += `<div><strong>Humedad:</strong> ${datos.humedad}%</div>`;
+                        }
+
+                        html += `</div>`;
+                    }
+                }
+
+                html += `</div>`;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function formatDate(dateStr) {
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            return new Date(dateStr).toLocaleDateString('es-ES', options);
+        }
+
+        function formatPeriod(period) {
+            if (period === '00-24') return 'Todo el día';
+            const [start, end] = period.split('-');
+            return `${start}:00 - ${end}:00`;
+        }
+
+        function getSkyDescription(code) {
+            const descriptions = {
+                '11': 'Despejado',
+                '12': 'Poco nuboso',
+                '13': 'Intervalos nubosos',
+                '14': 'Nuboso',
+                '15': 'Muy nuboso',
+                '16': 'Cubierto',
+                '17': 'Nubes altas',
+                '23': 'Intervalos nubosos con lluvia',
+                '24': 'Intervalos nubosos con nieve',
+                '25': 'Intervalos nubosos con lluvia y nieve',
+                '26': 'Cubierto con lluvia',
+                '27': 'Cubierto con nieve',
+                '28': 'Cubierto con lluvia y nieve',
+                '43': 'Niebla',
+                '44': 'Bruma',
+                '45': 'Calima',
+                '46': 'Bancos de niebla',
+                '51': 'Llovizna',
+                '52': 'Lluvia',
+                '53': 'Chubascos',
+                '54': 'Tormenta',
+                '55': 'Nevada',
+                '56': 'Aguanieve',
+                '57': 'Granizo',
+                '61': 'Viento',
+                '62': 'Viento fuerte',
+                '63': 'Viento muy fuerte',
+                '64': 'Viento extremo'
+            };
+            return descriptions[code] || `Código ${code}`;
+        }
+    </script>
+</body>
+
+</html>
