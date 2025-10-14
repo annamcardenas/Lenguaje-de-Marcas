@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CDList>
+  <CD>
+    <title>The Dark Side of the Moon</title>
+    <artist>Pink Floyd</artist>
+    <year>1973</year>
+    <genre>Progressive Rock</genre>
+    <tracks>
+      <track>
+        <number>1</number>
+        <name>Speak to Me / Breathe</name>
+        <duration>3:58</duration>
+      </track>
+      <track>
+        <number>2</number>
+        <name>On the Run</name>
+        <duration>3:36</duration>
+      </track>
+      <!-- Más tracks aquí -->
+    </tracks>
+  </CD>
+</CDList>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<letter>
+  <!-- Información del remitente -->
+  <sender>
+    <name>María López</name>
+    <address>
+      <street>Calle Principal 123</street>
+      <city>Madrid</city>
+      <postal-code>28001</postal-code>
+      <country>España</country>
+    </address>
+    <email>maria.lopez@example.com</email>
+    <phone>+34 600 123 456</phone>
+  </sender>
+
+  <!-- Información del destinatario -->
+  <receiver>
+    <name>Juan Pérez</name>
+    <address>
+      <street>Avenida Secundaria 456</street>
+      <city>Barcelona</city>
+      <postal-code>08001</postal-code>
+      <country>España</country>
+    </address>
+  </receiver>
+
+  <!-- Fecha de la carta -->
+  <date>15 de octubre de 2023</date>
+
+  <!-- Cuerpo de la carta -->
+  <body>
+    <paragraph>
+      Estimado Juan,
+    </paragraph>
+    <paragraph>
+      Espero que esta carta te encuentre bien. Me pongo en contacto contigo para informarte sobre los avances en el proyecto que discutimos la semana pasada.
+    </paragraph>
+    <paragraph>
+      Por favor, no dudes en contactarme si necesitas más información.
+    </paragraph>
+  </body>
+
+  <!-- Firma -->
+  <signature>
+    <greeting>Atentamente,</greeting>
+    <name>María López</name>
+    <position>Directora de Proyectos</position>
+  </signature>
+</letter>
