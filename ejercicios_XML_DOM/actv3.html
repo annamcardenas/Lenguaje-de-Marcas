@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h2>Información de Libros (books.xml)</h2>
+    <div id="resultados"></div>
+
+    <script>
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {
+            if (this.status === 200) {
+                const xmlDoc = this.responseXML;
+                const books = xmlDoc.getElementsByTagName("book");
+                let output = "";
+
+                output += `<p><b>1. Título del primer libro:</b> ${books[0].getElementsByTagName("title")[0].textContent}</p>`;
+
+                output += "<p><b>2. Todos los títulos:</b><br>";
+                const titles = xmlDoc.getElementsByTagName("title");
+                for (let i = 0; i < titles.length; i++) {
+                    output += `- ${titles[i].textContent}<br>`;
+                }
+                output += "</p>";
+
+                const book4 = books[3];
+                output += `<p><b>3. Número de atributos del cuarto libro:</b> ${book4.attributes.length}</p>`;
+
+                output += "<p><b>4. Valor de los atributos del cuarto libro:</b><br>";
+                for (let i = 0; i < book4.attributes.length; i++) {
+                    output += `- ${book4.attributes[i].name} = ${book4.attributes[i].value}<br>`;
+                }
+                output += "</p>";
+
+                const book3Authors = books[2].getElementsByTagName("author");
+                output += `<p><b>5. Número de autores del tercer libro:</b> ${book3Authors.length}</p>`;
+
+                output += "<p><b>6. Autores del tercer libro:</b><br>";
+                for (let i = 0; i < book3Authors.length; i++) {
+                    output += `- ${book3Authors[i].textContent}<br>`;
+                }
+
+                document.getElementById("resultados").innerHTML = output;
+            } else {
+                document.getElementById("resultados").innerHTML = "Error al cargar el XML.";
+            }
+        };
+
+        xhttp.onerror = function () {
+            document.getElementById("resultados").innerHTML = "Error de red. Abre la consola (F12).";
+        };
+
+        xhttp.open("GET", "books.xml");  
+        xhttp.send();
+    </script>
+</body>
+
+</html>
