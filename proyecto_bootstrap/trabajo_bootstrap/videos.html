@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineNest</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+</head>
+
+<body>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="img/logo.png" alt="Logo de CineNest" width="40" height="40"
+                    class="d-inline-block align-text-top me-2">
+                <span>CineNest</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item mx-2"> 
+                        <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="peliculas.html">Películas</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="reseñas.html">Reseñas</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="videos.html">Multimedia</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="contacto.html">Contacto</a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center">
+                    <select class="form-select form-select-sm me-3" aria-label="Seleccionar idioma"
+                        id="languageSelector">
+                        <option value="es">Español</option>
+                        <option value="en">English</option>
+                    </select>
+
+                    <button class="btn btn-outline-light btn-sm" id="darkModeToggle">
+                        <i class="bi bi-moon-fill"></i> Modo Oscuro
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-5">
+        <h1 class="text-center mb-4">Videos y Podcasts</h1>
+        <p class="text-center text-muted">Disfruta de una selección de tráilers de las películas más esperadas y
+            sumérgete en el mundo del cine con nuestros podcasts especializados.</p>
+
+        <!-- Fila de videos (Tráilers) -->
+        <section class="mb-5">
+            <h2 class="mb-3">Tráilers de Películas</h2>
+            <div id="carouselTrailers" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/bfCvI9rHis0" allowfullscreen></iframe>
+                                </div>
+                                <p class="mt-2">Tráiler de El Número 23</p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/7kSuas6mRpk" allowfullscreen></iframe>
+                                </div>
+                                <p class="mt-2">Tráiler de Kill Bill</p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/QxhDXmb2O3k" allowfullscreen></iframe>
+                                </div>
+                                <p class="mt-2">Tráiler de Tenet</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/zmerEY1IIbY" allowfullscreen></iframe>
+                                </div>
+                                <p class="mt-2">Tráiler de Ningún Sistema Es Seguro</p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/3LPZ4agE75Y" allowfullscreen></iframe>
+                                </div>
+                                <p class="mt-2">Tráiler de Midsommar</p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/loQVv9mBOys" allowfullscreen></iframe>
+                                </div>
+                                <p class="mt-2">Tráiler de Coherence</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselTrailers"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselTrailers"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Fila de escenas icónicas -->
+        <section class="mb-5">
+            <h2 class="mb-3">Escenas Icónicas del Cine</h2>
+            <div id="carouselEscenas" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/HU7Ga7qTLDU" allowfullscreen></iframe>
+                                </div>
+                                <p class="mt-2">Tears in the Rain - Blade Runner</p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/UmNc27sG9z0" allowfullscreen></iframe>
+                                </div>
+                                <p class="mt-2">Muerte a Sollozzo (escena) El padrino</p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/MHfrF0D-3Vw" allowfullscreen></iframe>
+                                </div>
+                                <p class="mt-2">Pulp Fiction - Mejor escena</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/Y8YP65RX1-I" allowfullscreen></iframe>
+                                </div>
+                                <p class="mt-2">Escena El silencio de los corderos</p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/oaHYH5n8I5A" allowfullscreen></iframe>
+                                </div>
+                                <p class="mt-2">Escena El Diario de Noa</p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/xf1qyv0m0oU" allowfullscreen></iframe>
+                                </div>
+                                <p class="mt-2">Requiem por un sueño</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselEscenas"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselEscenas"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Fila de entrevistas -->
+        <section class="mb-5">
+            <h2 class="mb-3">Entrevistas con Actores y Directores</h2>
+            <div id="carouselEntrevistas" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/FyFBwpP4ibk" allowfullscreen></iframe>
+                                </div>
+                                <p class="mt-2">NOSFERATU: Entrevista con elenco y director.</p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/a8uC4Y4tteg" allowfullscreen></iframe>
+                                </div>
+                                <p class="mt-2">Entrevista a Demi Moore y Margaret Qualley | La sustancia</p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/JT6MJFhN88I" allowfullscreen></iframe>
+                                </div>
+                                <p class="mt-2">Entrevista a Seth Rogen y Billy Eichner | Mufasa: el Rey León</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/6gZKHxadThM" allowfullscreen></iframe>
+                                </div>
+                                <p class="mt-2">Escuadrón Suicida - Entrevista a Margot Robbie</p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/47-qd6OG1CA" allowfullscreen></iframe>
+                                </div>
+                                <p class="mt-2">Zendaya & Nicole Kidman | Actors on Actors</p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/lEgqCXJ5Jk0" allowfullscreen></iframe>
+                                </div>
+                                <p class="mt-2">Jimmy Kimmel Interviews Timothée Chalamet, Zendaya, Austin Butler & Florence Pugh</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselEntrevistas"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselEntrevistas"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Fila de audios (Podcasts) -->
+        <section>
+            <h2 class="mb-3">Podcasts sobre Cine</h2>
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <audio controls class="w-100">
+                        <source src="audio/podcast1.mp3" type="audio/mpeg">
+                        Tu navegador no soporta el elemento de audio.
+                    </audio>
+                    <p class="mt-2">Podcast de Arcelia Ramírez</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <audio controls class="w-100">
+                        <source src="audio/podcast2.mp3" type="audio/mpeg">
+                        Tu navegador no soporta el elemento de audio.
+                    </audio>
+                    <p class="mt-2">Podcast: Cine de Terror</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <audio controls class="w-100">
+                        <source src="audio/podcast3.mp3" type="audio/mpeg">
+                        Tu navegador no soporta el elemento de audio.
+                    </audio>
+                    <p class="mt-2">Las mejores películas y decepciones de 2024</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">CineNest</h5>
+                    <p class="text-muted">Explora el mundo del cine con nosotros. Descubre las últimas películas,
+                        reseñas y
+                        noticias.</p>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">Inicio</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Películas</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Reseñas</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Noticias</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Legal</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">Términos y condiciones</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Política de privacidad</a></li>
+                    </ul>
+                    <h5 class="mt-4 mb-3">Síguenos</h5>
+                    <div>
+                        <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-12">
+                    <p class="text-center text-muted mb-0">&copy; <span id="year"></span> CineFan. Todos los derechos
+                        reservados.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- Modo oscuro y selector de idioma -->
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                darkModeToggle.innerHTML = '<i class="bi bi-sun-fill"></i> Modo Claro';
+            } else {
+                localStorage.setItem('theme', 'light');
+                darkModeToggle.innerHTML = '<i class="bi bi-moon-fill"></i> Modo Oscuro';
+            }
+        });
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="bi bi-sun-fill"></i> Modo Claro';
+        }
+
+    </script>
+</body>
+
+</html>

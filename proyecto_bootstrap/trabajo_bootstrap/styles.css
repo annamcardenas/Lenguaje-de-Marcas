@@ -1,0 +1,87 @@
+/* Modo oscuro */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode .navbar-dark {
+  background-color: #1a1a1a !important;
+}
+
+body.dark-mode .btn-outline-light {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+body.dark-mode .btn-outline-light:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+
+/* Limitar el ancho del carrusel */
+.carouselExample {
+    max-width: 800px; /* Ajusta este valor según tus necesidades */
+    margin: 0 auto;   /* Centrar el carrusel en la página */
+  }
+  
+  /* Ajustar el tamaño de las imágenes */
+  .carousel-image {
+    border-radius: 10px; /* Bordes redondeados para las imágenes */
+    object-fit: cover;  /* Ajustar la imagen sin distorsionarla */
+    height: 500px;      /* Ajusta la altura según tus necesidades */
+  }
+
+
+  /* Efectos imágenes*/
+.img-fluid {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.img-fluid:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Tarjetas peliculas */
+
+.movie-card {
+  transition: transform 0.3s ease;
+}
+.movie-card:hover {
+  transform: scale(1.05);
+}
+
+/* Contenedor de la tarjeta */
+.movie-card {
+  max-width: 300px; /* Reducir el ancho máximo de la tarjeta */
+  max-height: 600px;
+  margin: 0 auto; /* Centrar la tarjeta */
+  margin-top: 20px;
+}
+
+.card-body h5 {
+  font-size: 1rem; /* Tamaño del título */
+}
+
+.card-body p {
+  font-size: 0.875rem; /* Tamaño del texto */
+}
+
+/* Contenedor de la imagen con proporción 2:3 */
+.poster-container {
+  position: relative;
+  padding-top: 150%;
+  overflow: hidden;
+  background-color: #000; /* Fondo negro para espacios vacíos */
+}
+
+/* Estilo para la imagen */
+.movie-poster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ajusta la imagen sin distorsionarla */
+}

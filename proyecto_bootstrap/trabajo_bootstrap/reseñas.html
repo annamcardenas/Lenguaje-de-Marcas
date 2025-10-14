@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineNest</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+</head>
+
+<body>
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="img/logo.png" alt="Logo de CineNest" width="40" height="40"
+                    class="d-inline-block align-text-top me-2">
+                <span>CineNest</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Contenido de la barra de navegación -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item mx-2"> 
+                        <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="peliculas.html">Películas</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="reseñas.html">Reseñas</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="videos.html">Multimedia</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="contacto.html">Contacto</a>
+                    </li>
+                </ul>
+
+                <div class="d-flex align-items-center">
+                    <select class="form-select form-select-sm me-3" aria-label="Seleccionar idioma"
+                        id="languageSelector">
+                        <option value="es">Español</option>
+                        <option value="en">English</option>
+                    </select>
+
+                    <button class="btn btn-outline-light btn-sm" id="darkModeToggle">
+                        <i class="bi bi-moon-fill"></i> Modo Oscuro
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold">Reseñas de películas</h1>
+            <p class="lead">Descubre lo que opinan nuestros críticos y usuarios.</p>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <select class="form-select">
+                    <option selected>Filtrar por género</option>
+                    <option value="1">Acción</option>
+                    <option value="2">Comedia</option>
+                    <option value="3">Drama</option>
+                    <option value="4">Ciencia ficción</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <select class="form-select">
+                    <option selected>Filtrar por puntuación</option>
+                    <option value="1">⭐ 5 estrellas</option>
+                    <option value="2">⭐ 4 estrellas</option>
+                    <option value="3">⭐ 3 estrellas</option>
+                    <option value="4">⭐ 2 estrellas</option>
+                    <option value="5">⭐ 1 estrella</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="row">
+            <!-- Lista de reseñas -->
+            <div class="col-md-8">
+                <div class="list-group">
+                    <!-- Reseña 1 -->
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex align-items-center">
+                            <img src="img/cartel-peli1.jpg" alt="Película 1" class="img-thumbnail me-3"
+                                style="width: 100px; height: 150px; object-fit: cover;">
+                            <div>
+                                <h5 class="mb-1">Lilo & Stitch</h5>
+                                <p class="mb-1">Una nueva versión en acción real del clásico de animación de Disney de
+                                    2002.</p>
+                                <small class="text-warning">⭐⭐⭐⭐⭐ (5/5)</small>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Reseña 2 -->
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex align-items-center">
+                            <img src="img/cartel-peli2.jpg" alt="Película 2" class="img-thumbnail me-3"
+                                style="width: 100px; height: 150px; object-fit: cover;">
+                            <div>
+                                <h5 class="mb-1">Una vida en secreto</h5>
+                                <p class="mb-1">Una comedia divertida que te hará reír de principio a fin.</p>
+                                <small class="text-warning">⭐⭐⭐⭐ (4/5)</small>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Reseña 3 -->
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex align-items-center">
+                            <img src="img/cartel-peli3.jpg" alt="Película 3" class="img-thumbnail me-3"
+                                style="width: 100px; height: 150px; object-fit: cover;">
+                            <div>
+                                <h5 class="mb-1">Amy (La chica detrás del nombre)</h5>
+                                <p class="mb-1">El documental más destacado sobre Amy Winehouse.</p>
+                                <small class="text-warning">⭐⭐⭐ (3/5)</small>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Reseña 4 -->
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex align-items-center">
+                            <img src="img/cartel-peli4.jpg" alt="Película 4" class="img-thumbnail me-3"
+                                style="width: 100px; height: 150px; object-fit: cover;">
+                            <div>
+                                <h5 class="mb-1">Coherence</h5>
+                                <p class="mb-1">Película de ciencia ficción estadounidense estrenada en 2013.</p>
+                                <small class="text-warning">⭐⭐⭐⭐⭐ (5/5)</small>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Reseña 5 -->
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex align-items-center">
+                            <img src="img/cartel-peli5.jpg" alt="Película 5" class="img-thumbnail me-3"
+                                style="width: 100px; height: 150px; object-fit: cover;">
+                            <div>
+                                <h5 class="mb-1">Chicas malas</h5>
+                                <p class="mb-1">Una película dirigida por Mark Waters con Lindsay Lohan.</p>
+                                <small class="text-warning">⭐⭐⭐⭐⭐ (5/5)</small>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Reseña 6 -->
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex align-items-center">
+                            <img src="img/cartel-peli6.jpg" alt="Película 6" class="img-thumbnail me-3"
+                                style="width: 100px; height: 150px; object-fit: cover;">
+                            <div>
+                                <h5 class="mb-1">Donnie Darko</h5>
+                                <p class="mb-1">Película de terror y ciencia ficción ambientada en 1988.</p>
+                                <small class="text-warning">⭐⭐⭐ (3/5)</small>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Reseña 7 -->
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex align-items-center">
+                            <img src="img/cartel-peli7.jpg" alt="Película 7" class="img-thumbnail me-3"
+                                style="width: 100px; height: 150px; object-fit: cover;">
+                            <div>
+                                <h5 class="mb-1">Millenium: Los hombres que no amaban a las mujeres.</h5>
+                                <p class="mb-1">Una adaptación al cine de la primera novela de la saga Millennium escrita por Stieg Larsson.</p>
+                                <small class="text-warning">⭐⭐⭐⭐ (4/5)</small>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Reseña 8 -->
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex align-items-center">
+                            <img src="img/cartel-peli8.jpg" alt="Película 8" class="img-thumbnail me-3"
+                                style="width: 100px; height: 150px; object-fit: cover;">
+                            <div>
+                                <h5 class="mb-1">Buscando</h5>
+                                <p class="mb-1">Searching es una película de suspenso psicológico dirigida por Aneesh Chaganty y protagonizada por John Cho y Debra Messing.</p>
+                                <small class="text-warning">⭐⭐⭐ (3/5)</small>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Reseña 9 -->
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <div class="d-flex align-items-center">
+                            <img src="img/cartel-peli9.jpg" alt="Película 9" class="img-thumbnail me-3"
+                                style="width: 100px; height: 150px; object-fit: cover;">
+                            <div>
+                                <h5 class="mb-1">Mystic River</h5>
+                                <p class="mb-1">Un drama conmovedor con un final inesperado.</p>
+                                <small class="text-warning">⭐⭐⭐⭐⭐ (5/5)</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Aside -->
+            <aside class="col-md-4">
+                <div class="aside-table bg-light p-4 rounded shadow">
+                    <h3 class="mb-4">Buscar reseñas</h3>
+                    <div class="mb-4">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Buscar por título...">
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Película</th>
+                                <th scope="col">Puntuación</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <tr>
+                                <td>El Padrino</td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td>Toy Story</td>
+                                <td>⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td>El Señor de los Anillos</td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td>Interestelar</td>
+                                <td>⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td>Parásitos</td>
+                                <td>⭐⭐⭐⭐⭐</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- Pie de página -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">CineNest</h5>
+                    <p class="text-muted">Explora el mundo del cine con nosotros. Descubre las últimas películas,
+                        reseñas y noticias.</p>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white text-decoration-none">Inicio</a></li>
+                        <li><a href="peliculas.html" class="text-white text-decoration-none">Películas</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Reseñas</a></li>
+                        <li><a href="videos.html" class="text-white text-decoration-none">Multimedia</a></li>
+                        <li><a href="contacto.html" class="text-white text-decoration-none">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Legal</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white text-decoration-none">Términos y condiciones</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Política de privacidad</a></li>
+                    </ul>
+                    <h5 class="mt-4 mb-3">Síguenos</h5>
+                    <div>
+                        <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-12">
+                    <p class="text-center text-muted mb-0">&copy; <span id="year"></span> CineNest.
+                        Todos los derechos reservados.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- Modo oscuro y selector de idioma -->
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                darkModeToggle.innerHTML = '<i class="bi bi-sun-fill"></i> Modo Claro';
+            } else {
+                localStorage.setItem('theme', 'light');
+                darkModeToggle.innerHTML = '<i class="bi bi-moon-fill"></i> Modo Oscuro';
+            }
+        });
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="bi bi-sun-fill"></i> Modo Claro';
+        }
+
+    </script>
+
+    <!-- Script para buscador -->
+    <script>
+        const searchInput = document.getElementById("searchInput");
+        const tableBody = document.getElementById("tableBody");
+
+        searchInput.addEventListener("input", function () {
+            const searchTerm = this.value.toLowerCase();
+            const rows = tableBody.getElementsByTagName("tr");
+
+            for (let row of rows) {
+                const title = row.getElementsByTagName("td")[0].textContent.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
